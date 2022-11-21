@@ -1,7 +1,7 @@
-<?php
-	require_once('head.php');
-?>
+<!DOCTYPE html>
+<html lang="fr">
 
+<?php require_once('head.php'); ?>
 <body>
 	<!-- En-tête avec barre de navigation -->
 	<header class="container">
