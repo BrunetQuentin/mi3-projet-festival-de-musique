@@ -14,7 +14,7 @@
       <span class="fw-bolder">Vercors Music Festival 2022</span>.
     </p>
 
-    <img src="images/vercors-music-festival-2022-banniere.png" style="display: block; margin: auto; width: 90%; max-width: 600px" alt="Bannière du Vercors Music Festival 2022">
+    <img src="../images/vercors-music-festival-2022-banniere.png" style="display: block; margin: auto; width: 90%; max-width: 600px" alt="Bannière du Vercors Music Festival 2022">
 
     <section id="principale" class="row my-3">
       <!-- 1ère Card -->

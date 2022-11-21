@@ -8,6 +8,7 @@
         private $db_name = "pranierb_brunetqu_vercorsmusique";
         private $username = "pranierb";
         private $password = "Bsftj8a76m2457N";
+        private $port = "5432";
 
         // Propriété qui contiendra l'instance de la connexion
         protected $_connexion;
@@ -20,13 +21,17 @@
          *
          * @return void
          */
-        public function __construct(){
+        public function __construct($table){
+
+            $this->table = $table;
+
             // On supprime la connexion précédente
             $this->_connexion = null;
 
             // On essaie de se connecter à la base
-            $this->_connexion = pg_connect("host=$this->host port=5432 dbname=$this->db_name user=$this->username password=$this->password")
+            $this->_connexion = pg_connect("host=$this->host port=$this->port dbname=$this->db_name user=$this->username password=$this->password")
                 or die('Could not connect: ' . pg_last_error());
+            
 
         }
 
@@ -43,9 +48,8 @@
 
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table;
-            echo $this->_connexion;
-            $resultat = $this->execute($sql);
-            return $resultat->fetchAll(PDO::FETCH_ASSOC);
+            $resultat = pg_query($this->_connexion ,$sql);
+            return $resultat;
         }
     }
 ?>
