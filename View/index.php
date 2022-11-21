@@ -31,26 +31,6 @@
                   </li>";
                 }
               ?>
-              <!-- 01/07/2022 -->
-              <li>
-                Vendredi 1er juillet 2022 :
-                <span class="donnee-bdd gras">???</span> concerts à partir de
-                <span class="donnee-bdd gras">???</span>
-              </li>
-
-              <!-- 02/07/2022 -->
-              <li>
-                Samedi 2 juillet 2022 :
-                <span class="donnee-bdd gras">???</span> concerts à partir de
-                <span class="donnee-bdd gras">???</span>
-              </li>
-
-              <!-- 03/07/2022 -->
-              <li>
-                Dimanche 3 juillet 2022 :
-                <span class="donnee-bdd gras">???</span> concerts à partir de
-                <span class="donnee-bdd gras">???</span>
-              </li>
             </ul>
           </div>
         </div>
@@ -62,15 +42,13 @@
           <h5 class="card-header">3 scènes sur le plateau du Vercors</h5>
           <div class="card-body">
             <ul>
-              <li>
-                <span class="donnee-bdd gras">???</span> (<span class="donnee-bdd">???</span>)
-              </li>
-              <li>
-                <span class="donnee-bdd gras">???</span> (<span class="donnee-bdd">???</span>)
-              </li>
-              <li>
-                <span class="donnee-bdd gras">???</span> (<span class="donnee-bdd">???</span>)
-              </li>
+              <?php
+                  while($row = pg_fetch_assoc($scenes)){
+                    echo "<li>
+                      <span class='donnee-bdd gras'>" . $row['nom_scene'] . "</span> (<span class='donnee-bdd'>" . $row['code_postal'] . " " . $row['ville'] . "</span>)
+                    </li>";
+                  }
+                ?>
             </ul>
           </div>
         </div>

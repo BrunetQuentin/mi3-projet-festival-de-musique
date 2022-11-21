@@ -11,7 +11,7 @@ class Concert extends Model{
     }
 
     public function getDateOfConcert(){
-        $sql = "SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM " . $this->table . "GROUP BY date_concert";
+        $sql = "SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM " . $this->table . " GROUP BY date_concert ORDER BY date_concert";
         $resultat = pg_query($this->_connexion ,$sql);
         return $resultat;
     }
