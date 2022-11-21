@@ -1,7 +1,3 @@
-<?php
-  $actives = ['Acceuil'];
-?>
-
 <!-- En-tête avec barre de navigation -->
 <header class="container">
   <div class="d-flex flex-wrap justify-content-center px-4 py-3 mb-4 border-bottom">
@@ -13,15 +9,15 @@
     <!-- Partie de droite (Menu de navigation) -->
     <ul class="nav nav-pills">
       <li id="nav-accueil" class="nav-item mx-2">
-        <a href="index.php" class="nav-link active"> Accueil </a>
+        <a href="index.php" class="nav-link<?= $nav_active === 'Acceuil' ? ' active' : '' ?>"> Accueil </a>
       </li>
       <li id="nav-liste-artistes" class="nav-item mx-2">
-        <a href="liste-artistes.php" class="nav-link">
+        <a href="liste-artistes.php" class="nav-link<?= $nav_active === 'Liste des artistes' ? ' active' : '' ?>">
           Liste des artistes
         </a>
       </li>
       <li id="nav-prog-par-jour" class="nav-item mx-2">
-        <a href="prog-par-jour.php" class="nav-link">
+        <a href="prog-par-jour.php" class="nav-link<?= $nav_active === 'Programmation du jour' ? ' active' : '' ?>">
           Programmation par jour
         </a>
       </li>
