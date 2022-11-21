@@ -7,8 +7,7 @@
     class Artiste extends Model{
         public function __construct()
         {
-            parent::__construct();
-            $this->table = "Artiste";
+            parent::__construct("Artiste");
         }
     }
 

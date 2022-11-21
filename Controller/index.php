@@ -8,9 +8,10 @@
     // récupère les données de la table artiste
     $artistes = $artiste->getAll();
 
-    // affiche les données de la table artiste
-    foreach($artistes as $artiste){
-        echo $artiste['nom'] . " " . $artiste['prenom'] . "<br>";
+    while ($artiste = pg_fetch_row($artistes)) {
+        echo $artiste[1];
     }
+
+    require_once "../View/index.php";
 
 ?>
