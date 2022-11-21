@@ -1,16 +1,14 @@
 <?php
-    // inclusion du fichier Artiste.php
-    require_once "../Modele/Artiste.php";
+    require_once "../Modele/Scene.php";
+    require_once "../Modele/Concert.php";
 
-    // intence la classe artiste
-    $artiste = new Artiste();
+    $scene = new Scene();
 
-    // récupère les données de la table artiste
-    $artistes = $artiste->getAll();
+    $scenes = $scene->getAll();
 
-    while ($artiste = pg_fetch_row($artistes)) {
-        echo $artiste[1];
-    }
+    $concert = new Concert();
+
+    $dateConcerts = $concert->getDateOfConcert();
 
     require_once "../View/index.php";
 

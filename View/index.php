@@ -23,6 +23,14 @@
           <h5 class="card-header">3 jours de concerts</h5>
           <div class="card-body">
             <ul>
+              <?php
+                while($row = pg_fetch_assoc($dateConcerts)){
+                  echo "<li>" . $row['date_concert'] . " : 
+                    <span class='donnee-bdd gras'>" . $row['nbrconcert'] . "</span> concerts à partir de 
+                    <span class='donnee-bdd gras'>" . $row['starttime'] . "</span>
+                  </li>";
+                }
+              ?>
               <!-- 01/07/2022 -->
               <li>
                 Vendredi 1er juillet 2022 :
