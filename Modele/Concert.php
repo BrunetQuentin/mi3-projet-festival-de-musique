@@ -15,6 +15,12 @@ class Concert extends Model{
         $resultat = pg_query($this->_connexion ,$sql);
         return $resultat;
     }
+
+    public function getByArtistId($id) {
+        $sql = 'SELECT * FROM '.$this->table.' WHERE id_artiste = '.$id;
+        $resultat = pg_query($this->_connexion, $sql);
+        return $resultat;
+    }
 }
 
 ?>
