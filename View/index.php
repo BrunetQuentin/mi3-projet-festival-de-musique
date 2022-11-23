@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+<?php require_once "../utils/date.php";?>
 <?php require_once('head.php'); ?>
 <?php $nav_active = 'Acceuil'; ?>
 <body>
@@ -25,9 +25,9 @@
             <ul>
               <?php
                 while($row = pg_fetch_assoc($dateConcerts)){
-                  echo "<li>" . $row['date_concert'] . " : 
+                  echo "<li>" . dateToFrench($row['date_concert'], 'EEEE dd MMMM yyyy') . " : 
                     <span class='donnee-bdd gras'>" . $row['nbrconcert'] . "</span> concerts à partir de 
-                    <span class='donnee-bdd gras'>" . $row['starttime'] . "</span>
+                    <span class='donnee-bdd gras'>" . dateToFrench($row['starttime'], "HH mm") . "</span>
                   </li>";
                 }
               ?>
@@ -92,14 +92,18 @@
         <h5 class="card-header">Les 5 derniers messages du Livre d'or</h5>
 
         <div class="card-body text-center">
-          <figure>
-            <blockquote class="blockquote">
-              ???Message du livre d'or???
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              <b>???Pseudo???</b> (???Date???)
-            </figcaption>
-          </figure>
+          <?php
+            while($message = pg_fetch_assoc($messages)){
+              echo "<figure>
+                <blockquote class='blockquote'>
+                  " . $message['message_post'] . "
+                </blockquote>
+                <figcaption class='blockquote-footer'>
+                  <b>" . $message['pseudo_post'] . "</b> (" . dateToFrench($message['date_post'], 'EEEE dd MMMM yyyy à HH mm') . ")
+                </figcaption>
+              </figure>";
+            }
+          ?>
         </div>
       </div>
     </section>

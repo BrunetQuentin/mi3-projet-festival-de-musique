@@ -35,17 +35,6 @@
 
         }
 
-        // Fonction permetant d'executer une requête
-        public function execute($sql, $params = null){
-            if($params == null){
-                $resultat = $this->_connexion->query($sql);
-            }else{
-                $resultat = $this->_connexion->prepare($sql);
-                $resultat->execute($params);
-            }
-            return $resultat;
-        }
-
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table;
             $resultat = pg_query($this->_connexion ,$sql);
