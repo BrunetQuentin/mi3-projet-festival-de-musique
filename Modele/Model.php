@@ -31,8 +31,17 @@
             // On essaie de se connecter à la base
             $this->_connexion = pg_connect("host=$this->host port=$this->port dbname=$this->db_name user=$this->username password=$this->password")
                 or die('Could not connect: ' . pg_last_error());
-            
+        }
 
+        // Fonction permetant d'executer une requête
+        public function execute($sql, $params = null){
+            if($params == null){
+                $resultat = $this->_connexion->query($sql);
+            }else{
+                $resultat = $this->_connexion->prepare($sql);
+                $resultat->execute($params);
+            }
+            return $resultat;
         }
 
         public function getAll(){
