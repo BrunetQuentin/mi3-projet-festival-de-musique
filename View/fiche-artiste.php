@@ -36,31 +36,16 @@
 	<main class="container px-5 mb-5">
 		<h1>Fiche artiste</h1>
 
-		<h2 class="display-4 text-center fw-bolder">Ben Mazué</h2>
+		<h2 class="display-4 text-center fw-bolder"><?= $artiste[1] ?></h2>
 
-		<img class="rounded-pill mx-auto d-block my-4" src="https://www.vercorsmusicfestival.com/media/cache/program_artist_large/uploads/artist_image/large/da8f87ecab95b2bc9a5aa536082386e5cbbab405.jpeg" alt="Illustration de l'artiste Ben Mazué">
+		<img class="rounded-pill mx-auto d-block my-4" src="<?= $artiste[3] ?>" alt="Illustration de l'artiste Ben Mazué">
 
 		<hr>
 		<h3>Vidéo(s) de l'artiste</h3>
-		<article class="card m-4">
-			<div class="card-body">
-				<h4>Ben Mazué - Quand je marche</h4>
-				<div class="ratio ratio-16x9 mt-3">
-					<iframe src="https://www.youtube.com/embed/29gOHmidswU" title="Vidéo YouTube Ben Mazué - Quand je marche" allowfullscreen></iframe>
-				</div>
-			</div>
-		</article>
-		<article class="card m-4">
-			<div class="card-body">
-				<h4>Ben Mazué - Les jours heureux</h4>
-				<div class="ratio ratio-16x9 mt-3">
-					<iframe src="https://www.youtube.com/embed/tpoxa-J7etk" title="Vidéo YouTube Ben Mazué - Les jours heureux" allowfullscreen></iframe>
-				</div>
-			</div>
-		</article>
+		<?= $listeVideos ?>
 
 		<hr>
-		<p class="fst-italic">Pour plus d'informations, vous pouvez aller voir <a href="https://www.vercorsmusicfestival.com/artiste/ben-mazue/" target="_blank">la page de l'artiste sur le site officiel du festival</a>.</p>
+		<p class="fst-italic">Pour plus d'informations, vous pouvez aller voir <a href="<?= $artiste[2] ?>" target="_blank">la page de l'artiste sur le site officiel du festival</a>.</p>
 	</main>
 </body>
 
