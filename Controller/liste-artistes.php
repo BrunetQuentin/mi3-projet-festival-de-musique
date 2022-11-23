@@ -13,14 +13,18 @@ while ($artiste = pg_fetch_row($artistes)) {
 	if ($concert === false) {
 		continue;
 	}
-	$date = date('d/m/Y', strtotime($concert[3])); // format : FR
+	$date = strtotime($concert[3]);
+	if ($date === false) {
+		continue;
+	}
+	$date = date('d/m/Y', $date); // format : FR
 	$listeArtistes .=
 		'<div class="col-lg-3 col-md-4 col-sm-6 my-2">'
-			. '<a href="fiche-artiste.php?id='.$artiste[0].'" class="lien-card">'
+			. '<a href="fiche-artiste.php?id='.htmlspecialchars($artiste[0], ENT_QUOTES).'" class="lien-card">'
 				. '<div class="card">'
-					. '<img src="'.$artiste[3].'" class="card-img-top" alt="Illustration artiste">'
+					. '<img src="'.htmlspecialchars($artiste[3], ENT_QUOTES).'" class="card-img-top" alt="Illustration artiste">'
 					. '<div class="card-body">'
-						. '<h5 class="card-title"><span class="donnee-bdd gras">'.$artiste[1].'</span></h5>'
+						. '<h5 class="card-title"><span class="donnee-bdd gras">'.htmlspecialchars($artiste[1], ENT_QUOTES).'</span></h5>'
 						. '<p class="card-text">Jour du concert : <span class="donnee-bdd">'.$date.'</span>'
 						. '</p>'
 					. '</div>'
