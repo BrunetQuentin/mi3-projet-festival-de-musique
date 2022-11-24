@@ -5,3 +5,5 @@ Version : 14
 nom du schéma : pranierb_brunetqu_vercorsmusique
 login : pranierb
 mdp : Bsftj8a76m2457N
+
+mdp ssh: 02l!9gXR#mQb
