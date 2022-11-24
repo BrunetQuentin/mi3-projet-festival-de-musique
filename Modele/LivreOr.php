@@ -27,9 +27,7 @@ class LivreOr extends Model{
      * @param string $message Contenu de l'enregistrement.
      * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
-    public function addMessage($pseudo, $message): PgSql\Result|bool {
-        $ip = $_SERVER['REMOTE_ADDR'];
-
+    public function addMessage($pseudo, $message, $ip): PgSql\Result|bool {
         $sql = pg_prepare($this->_connexion, "messages", "INSERT INTO Livre_or (pseudo_post, message_post, date_post, ip_post) VALUES ($1, $2, NOW(), $3)");
         $result = pg_execute($this->_connexion, "messages", [$pseudo, $message, $ip]);
         return $result;
