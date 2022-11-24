@@ -31,7 +31,7 @@
                   }
 
                   $startTime = intval($row['starttime']);
-                  $startTime = date('H', $startTime).'H'.date('i', $startTime);
+                  $startTime = str_replace(' ', 'H', dateToFrench($row['starttime'], "HH mm"));
 
                   echo '<li>'.$dateConcert." : 
                     <span class='donnee-bdd gras'>" . htmlspecialchars($row['nbrconcert'], ENT_QUOTES) . "</span> concerts à partir de 
@@ -102,7 +102,7 @@
         <div class="card-body text-center">
           <?php
             while($message = pg_fetch_assoc($messages)){
-              $datePost = dateToFrench($message['date_post'], "dd/mm/yyyy");
+              $datePost = dateToFrench($message['date_post'], 'EEEE dd MMMM yyyy à HH mm');
 
               if ($datePost === false) {
                 continue;
