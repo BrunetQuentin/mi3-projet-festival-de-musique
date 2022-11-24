@@ -11,9 +11,9 @@ class LivreOr extends Model{
     }
 
     /**
-     * Obtient les premiers $number messages dans le livre d'or
-     * @param int $number Nombre de messages à obtenir
-     * @return array Tableau contenant les messages
+     * Obtiens les n premiers enregistrements du livre d'or.
+     * @param int $number Valeur de n.
+     * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
     public function getfirst($number){
         $sql = "SELECT * FROM Livre_or ORDER BY date_post DESC LIMIT $number";
@@ -21,7 +21,13 @@ class LivreOr extends Model{
         return $result;
     }
 
-    public function addMessage($pseudo, $message){
+    /**
+     * Rajoute un enregistrement dans le livre d'or.
+     * @param string $pseudo Pseudonyme de l'auteur.
+     * @param string $message Contenu de l'enregistrement.
+     * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
+     */
+    public function addMessage($pseudo, $message): PgSql\Result|bool {
         $ip = $_SERVER['REMOTE_ADDR'];
 
         $sql = pg_prepare($this->_connexion, "messages", "INSERT INTO Livre_or (pseudo_post, message_post, date_post, ip_post) VALUES ($1, $2, NOW(), $3)");

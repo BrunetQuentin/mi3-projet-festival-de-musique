@@ -14,6 +14,7 @@ class Concert extends Model{
 
     /**
      * Obtiens les dates, ainsi que le nombre de concerts pour chaque dates.
+     * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
     public function getDateOfConcert(): PgSql\Result|bool {
         $sql = "SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM " . $this->table . " GROUP BY date_concert ORDER BY date_concert";
@@ -24,6 +25,7 @@ class Concert extends Model{
     /**
      * Obtiens tout les concerts d'un artiste.
      * @param int $id Identifiant de l'artiste.
+     * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
     public function getByArtistId($id): PgSql\Result|bool {
         $sql = 'SELECT * FROM Concert WHERE id_artiste = '.$id ;
@@ -33,6 +35,7 @@ class Concert extends Model{
 
     /**
      * Obtiens les concerts des artistes et la scène en fonction de la date de concert.
+     * @return array Tableau contenant les objets contenant les résultats ou false à la place de l'objet en cas d'erreur.
      */
     public function getArtistsOfConcertsGroupByDate(): array {
         $sql = "SELECT date_concert FROM Concert GROUP BY date_concert ORDER BY date_concert";

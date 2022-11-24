@@ -3,6 +3,7 @@
     /**
      * Envois une en-tête de redirection vers une URL.
      * @param string $url URL cible.
+     * @return void
      */
     function redirect(string $url): void {
         header('Location: '.$url);
