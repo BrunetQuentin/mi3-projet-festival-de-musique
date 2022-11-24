@@ -27,7 +27,7 @@ class Concert extends Model{
      * @param int $id Identifiant de l'artiste.
      * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
-    public function getByArtistId($id): PgSql\Result|bool {
+    public function getByArtistId(int $id): PgSql\Result|bool {
         $sql = 'SELECT * FROM Concert WHERE id_artiste = '.$id ;
         $resultat = pg_query($this->_connexion, $sql);
         return $resultat;

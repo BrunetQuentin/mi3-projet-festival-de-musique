@@ -39,7 +39,7 @@
          * @param void|array $params Paramètres utilisés lors de l'exécution de la requête
          * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
          */
-        public function execute($sql, $params = null): PgSql\Result|bool {
+        public function execute(string $sql, void|array $params = null): PgSql\Result|bool {
             if($params == null){
                 $resultat = $this->_connexion->query($sql);
             }else{

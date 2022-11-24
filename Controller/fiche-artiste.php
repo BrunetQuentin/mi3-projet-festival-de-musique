@@ -12,6 +12,7 @@ $id = $_GET['id'];
 if (is_numeric($id) === false) {
 	redirect('../404.html');
 }
+$id = intval($id);
 
 // Instantiation des modèles
 $modeleArtiste = new Artiste();
