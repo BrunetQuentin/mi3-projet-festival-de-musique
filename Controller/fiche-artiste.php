@@ -19,9 +19,16 @@ if ($artiste === false) {
 }
 
 $videos = $modeleVideo->getByArtistId($id);
+$firstVideo = true;
 
 $listeVideos = '';
 while ($video = pg_fetch_row($videos)) {
+	if ($firstVideo === true) {
+		$listeVideos .=
+			'<hr>'
+			. '<h3>Vidéo(s) de l\'artiste</h3>';
+		$firstVideo = false;
+	}
 	$videoId = explode('/', $video[3]);
 	if (is_array($videoId) === false) {
 		continue;

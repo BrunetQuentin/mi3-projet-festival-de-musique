@@ -40,8 +40,6 @@
 
 		<img class="rounded-pill mx-auto d-block my-4" src="<?= $artiste[3] ?>" alt="Illustration de l'artiste Ben Mazué">
 
-		<hr>
-		<h3>Vidéo(s) de l'artiste</h3>
 		<?= $listeVideos ?>
 
 		<hr>
