@@ -13,7 +13,7 @@
     $message = $_POST['message'];
 
     // Vérification des paramètres
-    if ((is_string($pseudo) === true) && (strlen($pseudo) <= 50) && (is_string($message) === true) && (strlen($message) <= 500)) {
+    if ((is_string($pseudo) === true) && (strlen($pseudo) <= 50) && (strlen(trim($pseudo)) !== 0) && (is_string($message) === true) && (strlen($message) <= 500) && (strlen(trim($message)) !== 0)) {
         $livreOr->addMessage(htmlspecialchars($pseudo, ENT_QUOTES), htmlspecialchars($message, ENT_QUOTES));
     }
 
