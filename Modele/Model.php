@@ -33,7 +33,12 @@
                 or die('Could not connect: ' . pg_last_error());
         }
 
-        // Fonction permetant d'executer une requête
+        /**
+         * Fonction permetant d'executer une requête
+         * @param string $sql Requête SQL.
+         * @param void|array $params Paramètres utilisés lors de l'exécution de la requête
+         * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
+         */
         public function execute($sql, $params = null): PgSql\Result|bool {
             if($params == null){
                 $resultat = $this->_connexion->query($sql);
@@ -44,7 +49,10 @@
             return $resultat;
         }
 
-        // Obtiens tout les enregistrements de la table
+        /**
+         * Obtiens tout les enregistrements de la table
+         * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
+         */
         public function getAll(): PgSql\Result|bool {
             $sql = "SELECT * FROM " . $this->table;
             $resultat = pg_query($this->_connexion ,$sql);
