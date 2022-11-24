@@ -1,8 +1,11 @@
 <?php
-    require_once('../Modele/Concert.php');
+    // Inclusion dse modèles
+    require_once '../Modele/Concert.php';
 
+    // Obtention de la programmation par jour
     $modeleConcert = new Concert();
     $concerts = $modeleConcert->getArtistsOfConcertsGroupByDate();
 
-    require_once('../View/prog-par-jour.php');
+    // Envois de la vue
+    require_once '../View/prog-par-jour.php';
 ?>

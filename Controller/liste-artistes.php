@@ -1,12 +1,17 @@
 <?php
 
+// Inclusion des modèles
 require_once('../Modele/Artiste.php');
 require_once('../Modele/Concert.php');
 
+// Intantiation des modèles
 $modeleArtiste = new Artiste();
 $modeleConcert = new Concert();
+
+// Obtention des artistes
 $artistes = $modeleArtiste->getAllSorted();
 
+// Création des balises HTML
 $listeArtistes = '';
 while ($artiste = pg_fetch_row($artistes)) {
 	$concert = pg_fetch_row($modeleConcert->getByArtistId($artiste[0]));
@@ -33,4 +38,5 @@ while ($artiste = pg_fetch_row($artistes)) {
 		. '</div>';
 }
 
-require_once('../View/liste-artistes.php');
+// Envois de la vue
+require_once '../View/liste-artistes.php';

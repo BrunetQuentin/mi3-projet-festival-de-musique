@@ -1,26 +1,35 @@
 <?php
 
-require_once('../utils/redirect.php');
+// Inclusion de redirect()
+require_once '../utils/redirect.php';
 
-require_once('../Modele/Artiste.php');
-require_once('../Modele/Video.php');
+// Inclusion des modèles
+require_once '../Modele/Artiste.php';
+require_once '../Modele/Video.php';
 
+// Obtention de l'identifiant en paramètre
 $id = $_GET['id'];
 if (is_numeric($id) === false) {
 	redirect('../404.html');
 }
 
+// Instantiation des modèles
 $modeleArtiste = new Artiste();
 $modeleVideo = new Video();
 
+// Obtention de l'artiste concerné
 $artiste = pg_fetch_row($modeleArtiste->getById($id));
 if ($artiste === false) {
 	redirect('../404.html');
 }
 
+// Obtention des vidéos de l'artiste
 $videos = $modeleVideo->getByArtistId($id);
+
+// Pour savoir quand c'est la première vidéo
 $firstVideo = true;
 
+// Création des balises HTML
 $listeVideos = '';
 while ($video = pg_fetch_row($videos)) {
 	if ($firstVideo === true) {
@@ -45,4 +54,4 @@ while ($video = pg_fetch_row($videos)) {
 		. '</article>';
 }
 
-require_once('../View/fiche-artiste.php');
+require_once '../View/fiche-artiste.php';

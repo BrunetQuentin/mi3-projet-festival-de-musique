@@ -34,7 +34,7 @@ class Concert extends Model{
     /**
      * Obtiens les concerts des artistes et la scène en fonction de la date de concert.
      */
-    public function getArtistsOfConcertsGroupByDate(): PgSql\Result|bool {
+    public function getArtistsOfConcertsGroupByDate(): array {
         $sql = "SELECT date_concert FROM Concert GROUP BY date_concert ORDER BY date_concert";
         $dates = pg_query($this->_connexion, $sql);
 
