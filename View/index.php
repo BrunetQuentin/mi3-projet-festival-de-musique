@@ -102,7 +102,7 @@
         <div class="card-body text-center">
           <?php
             while($message = pg_fetch_assoc($messages)){
-              $datePost = dateToFrench($message['date_post'], 'EEEE dd MMMM yyyy à HH mm');
+              $datePost = dateToFrench($message['date_post'], 'EEEE/dd/MMMM');
 
               if ($datePost === false) {
                 continue;
