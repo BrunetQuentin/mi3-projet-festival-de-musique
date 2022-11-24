@@ -4,11 +4,11 @@
     class Model {
 
         // Informations de la base de données
-        private $host = "postgresql-pranierb.alwaysdata.net";
-        private $db_name = "pranierb_brunetqu_vercorsmusique";
-        private $username = "pranierb";
-        private $password = "Bsftj8a76m2457N";
-        private $port = "5432";
+        private $host = 'postgresql-pranierb.alwaysdata.net';
+        private $db_name = 'pranierb_brunetqu_vercorsmusique';
+        private $username = 'pranierb';
+        private $password = 'Bsftj8a76m2457N';
+        private $port = '5432';
 
         // Propriété qui contiendra l'instance de la connexion
         protected $_connexion;
@@ -54,7 +54,7 @@
          * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
          */
         public function getAll(): PgSql\Result|bool {
-            $sql = "SELECT * FROM " . $this->table;
+            $sql = 'SELECT * FROM ' . $this->table;
             $resultat = pg_query($this->_connexion ,$sql);
             return $resultat;
         }

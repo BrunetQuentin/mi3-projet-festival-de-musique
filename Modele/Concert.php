@@ -2,14 +2,14 @@
 <?php
 
 // Inclusion du fichier Model.php
-require_once "Model.php";
+require_once 'Model.php';
 
 class Concert extends Model{
 
     // Constructeur
     public function __construct()
     {
-        parent::__construct("Concert");
+        parent::__construct('Concert');
     }
 
     /**
@@ -17,7 +17,7 @@ class Concert extends Model{
      * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
      */
     public function getDateOfConcert(): PgSql\Result|bool {
-        $sql = "SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM " . $this->table . " GROUP BY date_concert ORDER BY date_concert";
+        $sql = 'SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM ' . $this->table . ' GROUP BY date_concert ORDER BY date_concert';
         $resultat = pg_query($this->_connexion ,$sql);
         return $resultat;
     }
@@ -38,7 +38,7 @@ class Concert extends Model{
      * @return array Tableau contenant les objets contenant les résultats ou false à la place de l'objet en cas d'erreur.
      */
     public function getArtistsOfConcertsGroupByDate(): array {
-        $sql = "SELECT date_concert FROM Concert GROUP BY date_concert ORDER BY date_concert";
+        $sql = 'SELECT date_concert FROM Concert GROUP BY date_concert ORDER BY date_concert';
         $dates = pg_query($this->_connexion, $sql);
 
         $result = array();
