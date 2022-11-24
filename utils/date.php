@@ -1,13 +1,16 @@
-
 <?php
 
     /**
-     * @param string $date Date au format YYYY-MM-DD
-     * @param string $format Format de la date à retourner
-     * @return string date au format français
+     * Convertis une date en format français.
+     * @param string $date Date au format YYYY-MM-DD.
+     * @param string $pattern Format de la date à retourner.
+     * @return string|bool Date au format français ou false en cas d'erreur.
      */
-    function dateToFrench($date, $pattern) {
+    function dateToFrench(string $date, string $pattern): string|bool {
         $dateObj = new DateTime($date);
+        if ($dateObj === false) {
+            return false;
+        }
 
         $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
         $formatter->setPattern($pattern);

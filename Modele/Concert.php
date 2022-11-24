@@ -17,7 +17,7 @@ class Concert extends Model{
     }
 
     public function getByArtistId($id) {
-        $sql = 'SELECT * FROM Concert WHERE id_artiste = '.$id;
+        $sql = 'SELECT * FROM Concert WHERE id_artiste = '.$id ;
         $resultat = pg_query($this->_connexion, $sql);
         return $resultat;
     }

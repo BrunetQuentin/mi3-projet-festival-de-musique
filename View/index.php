@@ -25,10 +25,17 @@
             <ul>
               <?php
                 while($row = pg_fetch_assoc($dateConcerts)){
-                  echo "<li>" . dateToFrench($row['date_concert'], 'EEEE dd MMMM yyyy') . " : 
-                    <span class='donnee-bdd gras'>" . $row['nbrconcert'] . "</span> concerts à partir de 
-                    <span class='donnee-bdd gras'>" . dateToFrench($row['starttime'], "HH") . "H" . dateToFrench($row['starttime'], "mm") . "</span>
-                  </li>";
+                  $dateConcert = ucfirst(dateToFrench($row['date_concert'], 'EEEE d MMMM yyyy'));
+                  $startTime = dateToFrench($row['starttime'], "HH mm");
+                  $startTime = str_replace(" ", "H", $startTime);
+
+                  if (($dateConcert === false) || ($startTime === false)) {
+                    continue;
+                  }
+                  echo '<li>'.$dateConcert." : 
+                    <span class='donnee-bdd gras'>" . htmlspecialchars($row['nbrconcert'], ENT_QUOTES) . "</span> concerts à partir de 
+                    <span class='donnee-bdd gras'>".$startTime.'</span>
+                  </li>';
                 }
               ?>
             </ul>
@@ -45,7 +52,7 @@
               <?php
                   while($row = pg_fetch_assoc($scenes)){
                     echo "<li>
-                      <span class='donnee-bdd gras'>" . $row['nom_scene'] . "</span> (<span class='donnee-bdd'>" . $row['code_postal'] . " " . $row['ville'] . "</span>)
+                      <span class='donnee-bdd gras'>" . htmlspecialchars($row['nom_scene'], ENT_QUOTES) . "</span> (<span class='donnee-bdd'>" . htmlspecialchars($row['code_postal'], ENT_QUOTES) . " " . htmlspecialchars($row['ville'], ENT_QUOTES) . "</span>)
                     </li>";
                   }
                 ?>
@@ -94,12 +101,17 @@
         <div class="card-body text-center">
           <?php
             while($message = pg_fetch_assoc($messages)){
+              $datePost = dateToFrench($message['date_post'], "dd/mm/yyyy");
+
+              if ($datePost === false) {
+                continue;
+              }
               echo "<figure>
                 <blockquote class='blockquote'>
-                  " . $message['message_post'] . "
+                  " . htmlspecialchars($message['message_post'], ENT_QUOTES) . "
                 </blockquote>
                 <figcaption class='blockquote-footer'>
-                  <b>" . $message['pseudo_post'] . "</b> (" . dateToFrench($message['date_post'], 'EEEE dd MMMM yyyy à HH mm') . ")
+                  <b>" . htmlspecialchars($message['pseudo_post'], ENT_QUOTES) . "</b> (" . $datePost . ")
                 </figcaption>
               </figure>";
             }

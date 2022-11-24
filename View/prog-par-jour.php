@@ -15,7 +15,7 @@
 		<?php 
 			foreach ($concerts as $concert){
 				echo "<section class='row my-5'>
-						<h2 class='text-primary'>".dateToFrench($concert['date'], 'EEEE dd MMMM yyyy')."</h2>";
+						<h2 class='text-primary'>".ucfirst(dateToFrench($concert['date'], 'EEEE d MMMM yyyy'))."</h2>";
 				
 				while($con = pg_fetch_assoc($concert['concerts'])){
 					echo "<article class='col-lg-3 col-md-4 col-sm-6 my-2'>
