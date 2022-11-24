@@ -31,12 +31,13 @@
                   }
 
                   $startTime = intval($row['starttime']);
-                  $startTime = str_replace(' ', 'H', dateToFrench($row['starttime'], "HH mm"));
+                  $startTime = str_replace(' ', 'H', dateToFrench($row['starttime'], 'HH mm'));
 
-                  echo '<li>'.$dateConcert." : 
-                    <span class='donnee-bdd gras'>" . htmlspecialchars($row['nbrconcert'], ENT_QUOTES) . "</span> concerts à partir de 
-                    <span class='donnee-bdd gras'>".$startTime.'</span>
-                  </li>';
+                  echo
+                    '<li>'.$dateConcert.' : '
+                      .'<span class="donnee-bdd gras">'.htmlspecialchars($row['nbrconcert'], ENT_QUOTES).'</span> concerts à partir de '
+                      .'<span class="donnee-bdd gras">'.$startTime.'</span>'
+                    .'</li>';
                 }
               ?>
             </ul>
@@ -107,14 +108,15 @@
               if ($datePost === false) {
                 continue;
               }
-              echo "<figure>
-                <blockquote class='blockquote'>
-                  " . htmlspecialchars($message['message_post'], ENT_QUOTES) . "
-                </blockquote>
-                <figcaption class='blockquote-footer'>
-                  <b>" . htmlspecialchars($message['pseudo_post'], ENT_QUOTES) . "</b> (" . $datePost . ")
-                </figcaption>
-              </figure>";
+              echo
+                '<figure>'
+                  .'<blockquote class="blockquote">'
+                    .htmlspecialchars($message['message_post'], ENT_QUOTES)
+                  .'</blockquote>'
+                  .'<figcaption class="blockquote-footer">'
+                    .'<b>'.htmlspecialchars($message['pseudo_post'], ENT_QUOTES).'</b> ('.$datePost.')'
+                  .'</figcaption>'
+                .'</figure>';
             }
           ?>
         </div>
