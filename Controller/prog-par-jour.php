@@ -7,5 +7,6 @@
     $concerts = $modeleConcert->getArtistsOfConcertsGroupByDate();
 
     // Envois de la vue
+    $page = 'Programmation du jour';
     require_once '../View/prog-par-jour.php';
 ?>

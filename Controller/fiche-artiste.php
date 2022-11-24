@@ -54,4 +54,6 @@ while ($video = pg_fetch_row($videos)) {
 		. '</article>';
 }
 
+// Inclusion de la vue
+$page = 'Fiche artiste';
 require_once '../View/fiche-artiste.php';

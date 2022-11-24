@@ -39,4 +39,5 @@ while ($artiste = pg_fetch_row($artistes)) {
 }
 
 // Envois de la vue
+$page = 'Liste des artistes';
 require_once '../View/liste-artistes.php';

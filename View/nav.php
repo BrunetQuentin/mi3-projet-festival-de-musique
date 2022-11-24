@@ -9,15 +9,15 @@
     <!-- Partie de droite (Menu de navigation) -->
     <ul class="nav nav-pills">
       <li id="nav-accueil" class="nav-item mx-2">
-        <a href="index.php" class="nav-link<?= $nav_active === 'Acceuil' ? ' active' : '' ?>"> Accueil </a>
+        <a href="index.php" class="nav-link<?= $page === 'Acceuil' ? ' active' : '' ?>"> Accueil </a>
       </li>
       <li id="nav-liste-artistes" class="nav-item mx-2">
-        <a href="liste-artistes.php" class="nav-link<?= $nav_active === 'Liste des artistes' ? ' active' : '' ?>">
+        <a href="liste-artistes.php" class="nav-link<?= $page === 'Liste des artistes' ? ' active' : '' ?>">
           Liste des artistes
         </a>
       </li>
       <li id="nav-prog-par-jour" class="nav-item mx-2">
-        <a href="prog-par-jour.php" class="nav-link<?= $nav_active === 'Programmation du jour' ? ' active' : '' ?>">
+        <a href="prog-par-jour.php" class="nav-link<?= $page === 'Programmation du jour' ? ' active' : '' ?>">
           Programmation par jour
         </a>
       </li>

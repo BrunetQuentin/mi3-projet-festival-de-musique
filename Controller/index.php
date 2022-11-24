@@ -17,6 +17,7 @@
     $messages = $livreOr->getfirst(5);
 
     // Envois de la vue
+    $page = 'Acceuil';
     require_once '../View/index.php';
 
 ?>

@@ -2,7 +2,6 @@
 <html lang="fr">
 
 <?php require_once('head.php'); ?>
-<?php $nav_active = 'Liste des artistes'; ?>
 <body>
 	<?php require_once('nav.php'); ?>
 	<!-- Contenu principal de la page -->
