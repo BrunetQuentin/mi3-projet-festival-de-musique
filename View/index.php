@@ -25,17 +25,13 @@
             <ul>
               <?php
                 while($row = pg_fetch_assoc($dateConcerts)){
-                  $dateConcert = ucfirst(dateToFrench($row['date_concert'], 'EEEE dd MMMM yyyy'));
+                  $dateConcert = ucfirst(dateToFrench($row['date_concert'], 'EEEE')).' '.ltrim(dateToFrench($row['date_concert'], 'dd MMMM yyyy'), '0');
                   if ($dateConcert === false) {
                     continue;
                   }
 
-                  /*|
-                  if (is_numeric($row['starttime']) === false) {
-                    continue;
-                  }
-                  |*/
-                  $startTime = date('H', intval($row['starttime'])).'H'.date('i', intval($row['starttime']));
+                  $startTime = intval($row['starttime']);
+                  $startTime = date('H', $startTime).'H'.date('i', $startTime);
 
                   echo '<li>'.$dateConcert." : 
                     <span class='donnee-bdd gras'>" . htmlspecialchars($row['nbrconcert'], ENT_QUOTES) . "</span> concerts à partir de 
