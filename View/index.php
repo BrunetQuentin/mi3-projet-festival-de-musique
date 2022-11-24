@@ -79,7 +79,7 @@
           <div class="mb-3 row">
             <label class="col-md-2 col-form-label required">Pseudo</label>
             <div class="col-md-10">
-              <input name="pseudo" type="text" class="form-control" size="50" required>
+              <input name="pseudo" type="text" class="form-control" size="50" maxlength="50" required>
             </div>
           </div>
           <div class="mb-3 row">
