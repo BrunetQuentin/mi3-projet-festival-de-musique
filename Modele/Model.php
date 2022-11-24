@@ -36,10 +36,10 @@
         /**
          * Fonction permetant d'executer une requête
          * @param string $sql Requête SQL.
-         * @param void|array $params Paramètres utilisés lors de l'exécution de la requête
+         * @param array $params Paramètres utilisés lors de l'exécution de la requête
          * @return PgSql\Result|bool Objet contenant les résultats ou false en cas d'erreur.
          */
-        public function execute(string $sql, void|array $params = null): PgSql\Result|bool {
+        public function execute(string $sql, array $params = null): PgSql\Result|bool {
             if($params == null){
                 $resultat = $this->_connexion->query($sql);
             }else{
