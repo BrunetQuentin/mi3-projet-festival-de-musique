@@ -1,22 +1,33 @@
 
 <?php
 
-// inclusion du fichier Model.php
+// Inclusion du fichier Model.php
 require_once 'Model.php';
 
 class LivreOr extends Model{
+
+    // Constructeur
     public function __construct()
     {
         parent::__construct('Livre_or');
     }
 
-    public function getfirst($number){
+    /**
+     * Obtiens les n premiers enregistrements du livre d'or.
+     * @param int $number Valeur de n.
+     */
+    public function getfirst($number): PgSql\Result|false {
         $sql = "SELECT * FROM Livre_or ORDER BY date_post DESC LIMIT $number";
         $result = pg_query($this->_connexion ,$sql);
         return $result;
     }
 
-    public function addMessage($pseudo, $message){
+    /**
+     * Rajoute un enregistrement dans le livre d'or.
+     * @param string $pseudo Pseudonyme de l'auteur.
+     * @param string $message Contenu de l'enregistrement.
+     */
+    public function addMessage($pseudo, $message): PgSql\Result|false {
         $ip = $_SERVER['REMOTE_ADDR'];
         $sql = pg_prepare("INSERT INTO Livre_or (pseudo_post, message_post, date_post, ip_post) VALUES ($1, $2, NOW(), $3)");
         $result = pg_execute($this->_connexion, $sql, [$pseudo, $message, $ip]);

@@ -8,7 +8,7 @@
      */
     function dateToFrench(string $date, string $pattern): string|bool {
         $dateObj = new DateTime($date);
-        if ($dateObj === false) {
+        if ($dateObj === false) { // Si se n'est pas une valeur qui peut être convertis en date
             return false;
         }
 

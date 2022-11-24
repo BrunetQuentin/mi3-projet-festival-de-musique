@@ -1,28 +1,40 @@
 
 <?php
 
-// inclusion du fichier Model.php
+// Inclusion du fichier Model.php
 require_once "Model.php";
 
 class Concert extends Model{
+
+    // Constructeur
     public function __construct()
     {
         parent::__construct("Concert");
     }
 
-    public function getDateOfConcert(){
+    /**
+     * Obtiens les dates, ainsi que le nombre de concerts pour chaque dates.
+     */
+    public function getDateOfConcert(): PgSql\Result|false {
         $sql = "SELECT date_concert, count(*) as nbrConcert, MIN(heure_debut_concert) as startTime FROM " . $this->table . " GROUP BY date_concert ORDER BY date_concert";
         $resultat = pg_query($this->_connexion ,$sql);
         return $resultat;
     }
 
-    public function getByArtistId($id) {
+    /**
+     * Obtiens tout les concerts d'un artiste.
+     * @param int $id Identifiant de l'artiste.
+     */
+    public function getByArtistId($id): PgSql\Result|false {
         $sql = 'SELECT * FROM Concert WHERE id_artiste = '.$id ;
         $resultat = pg_query($this->_connexion, $sql);
         return $resultat;
     }
 
-    public function getArtistsOfConcertsGroupByDate(){
+    /**
+     * Obtiens les concerts des artistes et la scène en fonction de la date de concert.
+     */
+    public function getArtistsOfConcertsGroupByDate(): PgSql\Result|false {
         $sql = "SELECT date_concert FROM Concert GROUP BY date_concert ORDER BY date_concert";
         $dates = pg_query($this->_connexion, $sql);
 

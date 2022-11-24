@@ -1,6 +1,6 @@
 
 <?php
-    // class permetant de gérer la bdd
+    // Classe permetant de gérer la BDD
     class Model {
 
         // Informations de la base de données
@@ -17,7 +17,7 @@
         public $table;
 
         /**
-         * construction pour initialiser la base de données
+         * Constructeur pour initialiser la base de données
          *
          * @return void
          */
@@ -34,7 +34,7 @@
         }
 
         // Fonction permetant d'executer une requête
-        public function execute($sql, $params = null){
+        public function execute($sql, $params = null): PgSql\Result|false {
             if($params == null){
                 $resultat = $this->_connexion->query($sql);
             }else{
@@ -44,7 +44,8 @@
             return $resultat;
         }
 
-        public function getAll(){
+        // Obtiens tout les enregistrements de la table
+        public function getAll(): PgSql\Result|false {
             $sql = "SELECT * FROM " . $this->table;
             $resultat = pg_query($this->_connexion ,$sql);
             return $resultat;
