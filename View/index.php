@@ -27,7 +27,7 @@
                 while($row = pg_fetch_assoc($dateConcerts)){
                   echo "<li>" . dateToFrench($row['date_concert'], 'EEEE dd MMMM yyyy') . " : 
                     <span class='donnee-bdd gras'>" . $row['nbrconcert'] . "</span> concerts à partir de 
-                    <span class='donnee-bdd gras'>" . dateToFrench($row['starttime'], "HH mm") . "</span>
+                    <span class='donnee-bdd gras'>" . dateToFrench($row['starttime'], "HH") . "H" . dateToFrench($row['starttime'], "mm") . "</span>
                   </li>";
                 }
               ?>
