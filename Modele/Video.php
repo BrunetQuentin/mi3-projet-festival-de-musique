@@ -16,7 +16,7 @@ class Video extends Model{
      * Obtiens toute les vidéos d'un artiste par son identifiant.
      * @param int $id Identifiant de l'artiste.
      */
-    public function getByArtistId($id): PgSql\Result|false {
+    public function getByArtistId($id): PgSql\Result|bool {
         $sql = 'SELECT * FROM '.$this->table.' WHERE id_artiste = '.$id;
         $resultat = pg_query($this->_connexion, $sql);
         return $resultat;

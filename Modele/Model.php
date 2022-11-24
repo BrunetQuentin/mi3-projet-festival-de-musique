@@ -34,7 +34,7 @@
         }
 
         // Fonction permetant d'executer une requête
-        public function execute($sql, $params = null): PgSql\Result|false {
+        public function execute($sql, $params = null): PgSql\Result|bool {
             if($params == null){
                 $resultat = $this->_connexion->query($sql);
             }else{
@@ -45,7 +45,7 @@
         }
 
         // Obtiens tout les enregistrements de la table
-        public function getAll(): PgSql\Result|false {
+        public function getAll(): PgSql\Result|bool {
             $sql = "SELECT * FROM " . $this->table;
             $resultat = pg_query($this->_connexion ,$sql);
             return $resultat;
